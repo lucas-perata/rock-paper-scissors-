@@ -14,20 +14,13 @@
 var playerPoints = 0 
 var computerPoints = 0 
 
-// Pruebas y console.log 
-
-
-
-
-
-// elección Aleatoria. 
-
-
    
 // Rondas 
 
 function playRound() {
 
+    // Elección aleatoria. 
+    
     const computer = Math.floor(Math.random()*3);
    
    function computerPlay(computer){
@@ -40,12 +33,15 @@ function playRound() {
    else if (computer ===2) {return "tije";}
 }
 
+// Elección jugador y máquina.
+
 const playerSelection = window.prompt("Rock, Paper, Tije").toLowerCase(); 
 const computerSelection = computerPlay(computer); 
 
-
+//Juego.
 
     if (playerSelection == "rock" && computerSelection == "paper") {
+        
        computerPoints++; return "You Lose!" + " " + "Your score is:" + " " + playerPoints + " " + "Computer score is:" + " " + computerPoints;
     }
     else if (playerSelection == "rock" && computerSelection == "tije") { 
@@ -69,7 +65,7 @@ const computerSelection = computerPlay(computer);
 
     else if (playerSelection == "tije" && computerSelection == "rock")    {
         computerPoints++; 
-        return "You Lose!" + " " + "Your score is:" + " " + playerPoints; + " " + "Computer score is:" + " " + computerPoints;}
+        return "You Lose!" + " " + "Your score is:" + " " + playerPoints; + " " + "Computer score is:" + " " +computerPoints;}
 
 
     else {playerPoints++; 
@@ -94,25 +90,31 @@ function endGame() {
     
 }
 
-// Juego 
+// Juego completo
+
+let rondas = 0
+
 
 function game(){
     
-    console.log(playRound()); 
-    if (playerPoints < 5 && computerPoints < 5) {return game()}
-    else if (playerPoints == 5 || computerPoints == 5)
-    
-    {return endGame()}
+console.log(rondas);
+alert(playRound());
+rondas++; 
 
+if (rondas<5 && rondas >=0){return game();
 
 }
+
+else if (rondas=5){return endGame()}
+
+}
+
  
 
-
-
-    console.log(game()) 
-
-
+console.log(game()); 
 
     </script>
 </html>
+
+
+

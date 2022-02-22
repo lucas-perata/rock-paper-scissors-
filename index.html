@@ -21,38 +21,61 @@ function computerPlay(){
     else {return "Scissors";}
 }
 
+//Elecciones jugador y computadora 
+
 const computerSelection = computerPlay(); 
-const playerSelection1 = "rock";
-const playerSelection = playerSelection1.toLowerCase();  
+const playerSelection1 = window.prompt("Rock, Paper, Scissors"); 
+const playerSelection = playerSelection1.toLowerCase(); 
+
+// Juego, pero faltan los puntajes y el loop. 
 
 function game(computerSelection, playerSelection)
 {
+
+    for(let i = 0; i < 5; i++) { 
+
+
     if (playerSelection === "rock" && computerSelection === "Paper") {
         return "You Lose!";
     }
-    else if (playerSelection == "rock" && computerSelection == "Scissors") { 
+    else if (playerSelection === "rock" && computerSelection === "Scissors") { 
         return "You win!";
     }
-    else if (playerSelection == "rock" && computerSelection == "Rock"){ 
+    else if (playerSelection === "rock" && computerSelection === "Rock"){ 
         return "Empate!"; 
     } 
 
-    else if (playerSelection == "paper" && computerSelection == "Rock"){
+    else if (playerSelection === "paper" && computerSelection === "Rock"){
         return "You win!"; }
 
-        else if (playerSelection == "paper" && computerSelection == "Scissors") {
+        else if (playerSelection === "paper" && computerSelection === "Scissors") {
         return "You Lose!";
     }
 
-    else if (playerSelection == "paper" && computerSelection == "Paper") {
+    else if (playerSelection === "paper" && computerSelection === "Paper") {
         return "Empate!";
     }
 
+    else if (playerSelection === "scissors" && computerSelection === "Rock")    {
+        return "You Lose!"; }
+
+        else if (playerSelection === "scissors" && computerSelection === "Scissors") {
+        return "Empate!";
+    }
+
+    else if (playerSelection === "scissors" && computerSelection === "Paper") {
+        return "You win!";
+    }
+
+
+    } 
 }
 
 console.log(game(computerSelection, playerSelection));
 console.log(playerSelection);
 console.log(computerSelection) 
+
+
 
     </script>
 </html>

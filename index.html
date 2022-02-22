@@ -9,71 +9,108 @@
     </body> 
     <script>
 
-let computer = Math.floor(Math.random()*3); 
+// Puntajes 
 
-function computerPlay(){
-    if (computer == 0) {
-    return "Rock";
+var playerPoints = 0 
+var computerPoints = 0 
+
+// Pruebas y console.log 
+
+
+
+
+
+// elección Aleatoria. 
+
+
+   
+// Rondas 
+
+function playRound() {
+
+    const computer = Math.floor(Math.random()*3);
+   
+   function computerPlay(computer){
+   if (computer === 0) {
+   return "rock";
 }
-    else if (computer == 1){
-    return "Paper";
+   else if (computer === 1){
+   return "paper";
 }
-    else {return "Scissors";}
-}
-
-//Elecciones jugador y computadora 
-
-const computerSelection = computerPlay(); 
-const playerSelection1 = window.prompt("Rock, Paper, Scissors"); 
-const playerSelection = playerSelection1.toLowerCase(); 
-
-// Juego, pero faltan los puntajes y el loop. 
-
-function game(computerSelection, playerSelection)
-{
-
-    for(let i = 0; i < 5; i++) { 
-
-
-    if (playerSelection === "rock" && computerSelection === "Paper") {
-        return "You Lose!";
-    }
-    else if (playerSelection === "rock" && computerSelection === "Scissors") { 
-        return "You win!";
-    }
-    else if (playerSelection === "rock" && computerSelection === "Rock"){ 
-        return "Empate!"; 
-    } 
-
-    else if (playerSelection === "paper" && computerSelection === "Rock"){
-        return "You win!"; }
-
-        else if (playerSelection === "paper" && computerSelection === "Scissors") {
-        return "You Lose!";
-    }
-
-    else if (playerSelection === "paper" && computerSelection === "Paper") {
-        return "Empate!";
-    }
-
-    else if (playerSelection === "scissors" && computerSelection === "Rock")    {
-        return "You Lose!"; }
-
-        else if (playerSelection === "scissors" && computerSelection === "Scissors") {
-        return "Empate!";
-    }
-
-    else if (playerSelection === "scissors" && computerSelection === "Paper") {
-        return "You win!";
-    }
-
-
-    } 
+   else if (computer ===2) {return "tije";}
 }
 
-console.log(game(computerSelection, playerSelection));
-console.log(playerSelection);
-console.log(computerSelection) 
+const playerSelection = window.prompt("Rock, Paper, Tije").toLowerCase(); 
+const computerSelection = computerPlay(computer); 
+
+
+
+    if (playerSelection == "rock" && computerSelection == "paper") {
+       computerPoints++; return "You Lose!" + " " + "Your score is:" + " " + playerPoints + " " + "Computer score is:" + " " + computerPoints;
+    }
+    else if (playerSelection == "rock" && computerSelection == "tije") { 
+       playerPoints++; 
+        return "You win!" + " " + "Your score is:" + " " + playerPoints + " " + "Computer score is:" + " " + computerPoints;
+    }
+   
+
+    else if (playerSelection == computerSelection){
+        return "Tie!" + " " + "Your score is:" + " " + playerPoints + " " + "Computer score is:" + " " + computerPoints;
+        }
+
+        else if (playerSelection == "paper" && computerSelection == "tije") {
+            computerPoints++; 
+        return "You Lose!" + " " + "Your score is:" + " " + playerPoints + " " + "Computer score is:" + " " + computerPoints;
+    }
+
+    else if (playerSelection == "paper" && computerSelection == "paper") {
+        return "Empate!" + " " + "Your score is:" + " " + playerPoints + " " + "Computer score is:" + " " + computerPoints;
+    }
+
+    else if (playerSelection == "tije" && computerSelection == "rock")    {
+        computerPoints++; 
+        return "You Lose!" + " " + "Your score is:" + " " + playerPoints; + " " + "Computer score is:" + " " + computerPoints;}
+
+
+    else {playerPoints++; 
+        return "You win!" + " " + "Your score is:" + " " + playerPoints + " " + "Computer score is:" + " " + computerPoints;
+        
+    }
+    
+}
+
+// Fin de Juego 
+
+function endGame() { 
+
+    if (playerPoints > computerPoints) { 
+        return "Game Over. Winner!";
+    }
+
+    else if (computerPoints>playerPoints) {
+        return "Game Over. Loser!"; 
+    }
+    else {}
+    
+}
+
+// Juego 
+
+function game(){
+    
+    console.log(playRound()); 
+    if (playerPoints < 5 && computerPoints < 5) {return game()}
+    else if (playerPoints == 5 || computerPoints == 5)
+    
+    {return endGame()}
+
+
+}
+ 
+
+
+
+    console.log(game()) 
 
 
 
